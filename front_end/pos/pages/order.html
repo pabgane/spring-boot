@@ -3,485 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>order</title>
+    <title>Place Order</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
-        body{
-            background:#0b1220;
-            background-image:
-                    radial-gradient(1200px 600px at 10% 0%, rgba(99,102,241,.20), transparent 60%),
-                    radial-gradient(900px 500px at 90% 10%, rgba(16,185,129,.15), transparent 55%),
-                    radial-gradient(900px 600px at 50% 100%, rgba(236,72,153,.10), transparent 55%);
-            min-height:100vh;
-        }
-
-        .app-shell{ max-width:1100px; }
-
-        .navbar{
-            border-bottom:1px solid rgba(255,255,255,.08);
-            backdrop-filter: blur(10px);
-            background: rgba(15,23,42,.70) !important;
-        }
-        .navbar .navbar-brand{ font-weight:800; letter-spacing:.3px; }
-        .nav-link{ font-weight:600; opacity:.9; }
-        .nav-link:hover{ opacity:1; }
-
-        .card{
-            border:1px solid rgba(255,255,255,.08);
-            background: rgba(15,23,42,.75);
-            color:#e5e7eb;
-            border-radius:18px;
-        }
-
-        .section-title{
-            font-weight:900;
-            letter-spacing:.2px;
-            color:#f8fafc;
-        }
-        .subtle{ color: rgba(229,231,235,.75); }
-
-        .card .form-label{
-            color: rgba(229,231,235,.85);
-            font-weight:600;
-        }
-
-        .form-control,.form-select{
-            background: rgba(2,6,23,.55);
-            border:1px solid rgba(255,255,255,.10);
-            color:#e5e7eb;
-            border-radius:14px;
-        }
-
-        .form-control:focus,.form-select:focus{
-            background: rgba(2,6,23,.65);
-            border-color: rgba(99,102,241,.60);
-            box-shadow: 0 0 0 .25rem rgba(99,102,241,.15);
-            color:#fff;
-        }
-
-        .btn{
-            border-radius:14px;
-            font-weight:700;
-        }
-        .btn-primary{ box-shadow: 0 10px 20px rgba(99,102,241,.14); }
-        .btn-success{ box-shadow: 0 10px 20px rgba(34,197,94,.15); }
-        .btn-danger{ box-shadow: 0 10px 20px rgba(239,68,68,.12); }
-
-        .table-wrap{
-            border-radius:18px;
-            overflow:hidden;
-            border:1px solid rgba(255,255,255,.08);
-        }
-
-        .table{ margin-bottom:0; }
-        .table-dark{
-            --bs-table-bg: rgba(2,6,23,.75);
-            --bs-table-border-color: rgba(255,255,255,.10);
-        }
-        .table-bordered > :not(caption) > *{
-            border-color: rgba(255,255,255,.10);
-        }
-        .table-hover tbody tr:hover{
-            background: rgba(99,102,241,.10);
-        }
-
-        .muted-hr{
-            border-top:1px solid rgba(255,255,255,.08);
-            opacity:1;
-        }
-
-        .top-bar{
-            display:flex;
-            align-items:flex-end;
-            justify-content:space-between;
-            gap:12px;
-            margin-bottom:16px;
-        }
-
-        .badge-soft{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            padding:8px 12px;
-            border-radius:999px;
-            background: rgba(99,102,241,.12);
-            border:1px solid rgba(99,102,241,.25);
-            color:#c7d2fe;
-            font-weight:700;
-            font-size:.85rem;
-            white-space:nowrap;
-        }
-
-        .mini-help{
-            display:block;
-            color: rgba(229,231,235,.65) !important;
-            font-size: .85rem;
-        }
+        body{background:#fff0f5;}
+        .card{border-radius:20px; box-shadow:0 10px 25px rgba(255,77,136,.15); padding:30px; margin-top:20px;}
+        .section-title{font-weight:800; color:#c2185b;}
+        .form-label{font-weight:600;}
+        .btn-place{background:#ff4d88; color:white;}
+        .navbar{margin-bottom:20px;}
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container app-shell">
-        <a class="navbar-brand" href="#"><span class="me-2">🧾</span>Mini POS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-lg-2">
-                <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="customer.html">customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="item.html">item</a></li>
-                <li class="nav-item"><a class="nav-link" href="order.html">order</a></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <a class="navbar-brand" href="customer.html">Customer</a>
+        <a class="navbar-brand" href="item.html">Item</a>
+        <a class="navbar-brand" href="order.html">Order</a>
     </div>
 </nav>
 
-<div class="container app-shell py-4 py-lg-5">
+<div class="container">
 
-    <div class="top-bar">
-        <div>
-            <h2 class="section-title mb-1">Place Order</h2>
-            <div class="subtle">Select customer, add items to cart, then checkout.</div>
+    <div class="card">
+        <h3 class="section-title text-center mb-4">Place Order (Manual ID Entry)</h3>
+
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <label class="form-label">Customer ID</label>
+                <input type="text" id="customerId" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Item ID</label>
+                <input type="text" id="itemId" class="form-control">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Quantity</label>
+                <input type="number" id="orderQty" class="form-control" min="1" value="1">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Item Price</label>
+                <input type="number" id="itemPrice" class="form-control" readonly>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end">
+                <button class="btn btn-place w-100" id="placeOrderBtn">Place Order</button>
+            </div>
+
         </div>
-        <div class="badge-soft">🛒 Tip: Add the same item again to increase qty</div>
     </div>
 
-    <div class="row g-4">
-
-        <div class="col-lg-5">
-            <div class="card shadow-lg p-4 p-lg-5">
-                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
-                    <h4 class="mb-0 section-title">Order Details</h4>
-                    <span class="subtle">Auto ID + live stock</span>
-                </div>
-
-                <hr class="muted-hr my-3">
-
-                <div class="row g-3">
-                    <div class="col-12">
-                        <label class="form-label">Order ID (Auto)</label>
-                        <input type="text" id="orderId" class="form-control" disabled>
-                        <small class="mini-help">Preview only. Final ID is generated by DB.</small>
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">Customer ID</label>
-                        <select id="cusSelect" class="form-select">
-                            <option value="">-- Select Customer --</option>
-                        </select>
-                        <small class="mini-help">Customer Name: <span id="cusNameView">-</span></small>
-                    </div>
-
-                    <hr class="muted-hr my-2">
-
-                    <div class="col-12">
-                        <label class="form-label">Item ID</label>
-                        <select id="itemSelect" class="form-select">
-                            <option value="">-- Select Item --</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Item Name</label>
-                        <input type="text" id="itemName" class="form-control" disabled>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Unit Price</label>
-                        <input type="text" id="unitPrice" class="form-control" disabled>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Available Qty</label>
-                        <input type="text" id="availableQty" class="form-control" disabled>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label">Order Qty</label>
-                        <input type="number" id="orderQty" class="form-control" min="1" placeholder="1">
-                    </div>
-
-                    <div class="col-12">
-                        <button class="btn btn-primary w-100" id="btnAddToCart" type="button">Add to Cart</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-7">
-            <div class="card shadow-lg p-4 p-lg-5">
-                <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-                    <h4 class="mb-0 section-title">Cart</h4>
-                    <div class="fs-5">
-                        <span class="subtle me-2">Total</span>
-                        <span class="fw-bold" id="grandTotal">0.00</span>
-                    </div>
-                </div>
-
-                <div class="table-wrap">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover text-center align-middle">
-                            <thead class="table-dark">
-                            <tr>
-                                <th>Item ID</th>
-                                <th>Name</th>
-                                <th>Qty</th>
-                                <th>Unit Price</th>
-                                <th>Total</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody id="cartBody"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <button class="btn btn-success w-100 mt-3" id="btnPlaceOrder" type="button">Place Order</button>
-                <div class="subtle mt-2">
-                    <small>After placing, stock will refresh automatically.</small>
-                </div>
-            </div>
-        </div>
-
+    <div class="card mt-4">
+        <h4 class="section-title mb-3">Order List</h4>
+        <table class="table table-bordered text-center align-middle">
+            <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Item ID</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody id="orderTable"></tbody>
+        </table>
     </div>
+
 </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- SweetAlert2 (add this BEFORE your main script) -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- ✅ SCRIPT UNCHANGED -->
 <script>
-    const CUSTOMER_URL = "http://localhost:8080/app/v1/customer";
-    const ITEM_URL = "http://localhost:8080/app/v1/item";
-    const ORDER_URL = "http://localhost:8080/app/v1/order";
 
-    let customers = [];
-    let items = [];
-    let cart = []; // { itemId, name, qty, unitPrice, total }
+    // Load saved customers and items
+    let customers = JSON.parse(localStorage.getItem("customers") || "[]");
+    let items = JSON.parse(localStorage.getItem("items") || "[]");
 
-    // ✅ SweetAlert2 helpers (only UI, no logic changes)
-    function showError(msg) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: msg
-        });
-    }
+    let orders = [];
 
-    function showSuccess(msg) {
-        Swal.fire({
-            icon: "success",
-            title: "Success",
-            text: msg,
-            timer: 1500,
-            showConfirmButton: false
-        });
-    }
-
-    function money(n) { return Number(n || 0).toFixed(2); }
-
-    function clearItemInputs() {
-        $("#itemName").val("");
-        $("#unitPrice").val("");
-        $("#availableQty").val("");
-        $("#orderQty").val("");
-    }
-
-    function renderCart() {
-        $("#cartBody").empty();
-
-        cart.forEach((c, idx) => {
-            $("#cartBody").append(`
-        <tr>
-          <td>${c.itemId}</td>
-          <td>${c.name}</td>
-          <td>${c.qty}</td>
-          <td>${money(c.unitPrice)}</td>
-          <td>${money(c.total)}</td>
-          <td><button class="btn btn-sm btn-danger btnRemove" data-index="${idx}">Remove</button></td>
-        </tr>
-      `);
-        });
-
-        const grandTotal = cart.reduce((sum, x) => sum + Number(x.total), 0);
-        $("#grandTotal").text(money(grandTotal));
-    }
-
-    function loadNextOrderId() {
-        $.ajax({
-            url: ORDER_URL + "/next-id",
-            method: "GET",
-            success: function (id) {
-                $("#orderId").val(id);
-            },
-            error: function () {
-                $("#orderId").val("Auto");
-            }
-        });
-    }
-
-    function loadCustomers() {
-        $.ajax({
-            url: CUSTOMER_URL,
-            method: "GET",
-            dataType: "json",
-            success: function (resp) {
-                customers = resp?.data || [];   // ✅ important
-
-                $("#cusSelect").empty().append(`<option value="">-- Select Customer --</option>`);
-                customers.forEach((c) => {
-                    $("#cusSelect").append(`<option value="${c.cId}">${c.cId}</option>`);
-                });
-            },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-                showError("Customer load failed: " + (xhr.responseText || xhr.status));
-            }
-        });
-    }
-
-    function loadItems() {
-        $.ajax({
-            url: ITEM_URL,
-            method: "GET",
-            dataType: "json",
-            success: function (resp) {
-                items = resp?.data || [];  // ✅ important
-
-                $("#itemSelect").empty().append(`<option value="">-- Select Item --</option>`);
-                items.forEach((i) => {
-                    $("#itemSelect").append(`<option value="${i.id}">${i.id}</option>`);
-                });
-            },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-                showError("Item load failed: " + (xhr.responseText || xhr.status));
-            }
-        });
-    }
-
-
-    $("#cusSelect").on("change", function () {
-        const cid = Number($(this).val());
-        const cus = customers.find((c) => c.cId === cid);
-        $("#cusNameView").text(cus ? cus.cName : "-");
+    // Auto fill price when Item ID typed
+    document.getElementById("itemId").addEventListener("keyup", function(){
+        let itemId = this.value;
+        let item = items.find(i => i.id === itemId);
+        if(item){
+            document.getElementById("itemPrice").value = item.price;
+        } else {
+            document.getElementById("itemPrice").value = "";
+        }
     });
 
-    $("#itemSelect").on("change", function () {
-        const itemId = Number($(this).val());
-        const it = items.find((i) => i.id === itemId);
+    // Place Order
+    document.getElementById("placeOrderBtn").addEventListener("click", function(){
 
-        if (!it) {
-            clearItemInputs();
+        let custId = document.getElementById("customerId").value;
+        let itemId = document.getElementById("itemId").value;
+        let qty = Number(document.getElementById("orderQty").value);
+        let price = Number(document.getElementById("itemPrice").value);
+
+        // Validation
+        let customer = customers.find(c => c.id === custId);
+        if(!customer){
+            alert("Customer ID not found!");
             return;
         }
 
-        $("#itemName").val(it.name);
-        $("#unitPrice").val(money(it.price));
-        $("#availableQty").val(it.qty);
-        $("#orderQty").val(1).focus();
-    });
-
-    $("#btnAddToCart").on("click", function () {
-        const customerId = Number($("#cusSelect").val());
-        const itemId = Number($("#itemSelect").val());
-        const qty = Number($("#orderQty").val());
-
-        if (!customerId) return showError("Select a customer!");
-        if (!itemId) return showError("Select an item!");
-        if (!qty || qty <= 0) return showError("Enter valid order qty!");
-
-        const it = items.find((i) => i.id === itemId);
-        if (!it) return showError("Invalid item!");
-
-        const available = Number(it.qty);
-        if (qty > available) return showError(`Not enough stock! Available: ${available}`);
-
-        const existing = cart.find((c) => c.itemId === itemId);
-        const newCartQty = existing ? existing.qty + qty : qty;
-
-        if (newCartQty > available) return showError(`Cart qty exceeds available stock! Available: ${available}`);
-
-        if (existing) {
-            existing.qty = newCartQty;
-            existing.total = existing.qty * existing.unitPrice;
-        } else {
-            cart.push({
-                itemId: it.id,
-                name: it.name,
-                qty: qty,
-                unitPrice: Number(it.price),
-                total: qty * Number(it.price)
-            });
+        let item = items.find(i => i.id === itemId);
+        if(!item){
+            alert("Item ID not found!");
+            return;
         }
 
-        renderCart();
-        $("#orderQty").val(1);
+        if(qty <= 0){
+            alert("Enter valid quantity!");
+            return;
+        }
+
+        if(qty > item.qty){
+            alert("Not enough stock!");
+            return;
+        }
+
+        let total = qty * price;
+
+        // Reduce stock
+        item.qty -= qty;
+        localStorage.setItem("items", JSON.stringify(items));
+
+        // Add order
+        orders.push({custId, itemId, qty, price, total});
+        renderOrders();
+
+        alert("Order Placed Successfully!");
+
+        // Clear fields
+        document.getElementById("customerId").value="";
+        document.getElementById("itemId").value="";
+        document.getElementById("orderQty").value=1;
+        document.getElementById("itemPrice").value="";
     });
 
-    $("#cartBody").on("click", ".btnRemove", function () {
-        const idx = Number($(this).data("index"));
-        cart.splice(idx, 1);
-        renderCart();
-    });
-
-    $("#btnPlaceOrder").on("click", function () {
-        const customerId = Number($("#cusSelect").val());
-        if (!customerId) return showError("Select a customer!");
-        if (cart.length === 0) return showError("Cart is empty!");
-
-        // ✅ do NOT send orderId
-        const orderPayload = {
-            customerId: customerId,
-            items: cart.map((c) => ({
-                itemId: c.itemId,
-                qty: c.qty,
-                unitPrice: c.unitPrice
-            })),
-            total: Number(cart.reduce((sum, x) => sum + Number(x.total), 0))
-        };
-
-        $.ajax({
-            url: ORDER_URL,
-            method: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(orderPayload),
-            success: function () {
-                showSuccess("Order placed ✅");
-
-                cart = [];
-                renderCart();
-                $("#cusSelect").val("");
-                $("#cusNameView").text("-");
-                $("#itemSelect").val("");
-                clearItemInputs();
-
-                loadItems();
-                loadNextOrderId(); // ✅ refresh preview
-            },
-            error: function (xhr) {
-                console.log(xhr.responseText);
-                showError("Place order failed: " + (xhr.responseText || xhr.status));
-            }
+    // Render orders
+    function renderOrders(){
+        const tbody = document.getElementById("orderTable");
+        tbody.innerHTML = "";
+        orders.forEach(o=>{
+            tbody.innerHTML += `
+        <tr>
+            <td>${o.custId}</td>
+            <td>${o.itemId}</td>
+            <td>${o.qty}</td>
+            <td>${o.price}</td>
+            <td>${o.total}</td>
+        </tr>
+        `;
         });
-    });
+    }
 
-    $(document).ready(function () {
-        loadCustomers();
-        loadItems();
-        renderCart();
-        loadNextOrderId();
-    });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
